@@ -1,0 +1,48 @@
+import { R } from '../components/Furigana.jsx'
+
+export const ENTRIES = [
+  {
+    id:'textile',num:'01',
+    tag:'Industry One',
+    title:<><R k="繊維" r="せんい"/> · TEXTILE</>,
+    titleEn:'TEXTILE',
+    desc:'世界第二位の衣料品輸出国 — Made in Bangladesh',
+    descEn:'World\'s #2 garment exporter — Made in Bangladesh',
+    color:'rgba(212,0,42,0.12)',
+    bar:'#e8193a',
+    bg:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=60',
+  },
+  {
+    id:'leather',num:'02',
+    tag:'Industry Two',
+    title:<><R k="皮革" r="ひかく"/> · LEATHER</>,
+    titleEn:'LEATHER',
+    desc:'第二の輸出産業 — 革製品・靴・バッグ',
+    descEn:'Second largest export — leather goods, shoes, bags',
+    color:'rgba(139,69,19,0.15)',
+    bar:'#a05a2c',
+    bg:'https://images.unsplash.com/photo-1635408712061-6c3b16e0aa14?w=1200&q=60',
+  },
+  {
+    id:'jute',num:'03',
+    tag:'Industry Three',
+    title:<><R k="黄麻" r="こうま"/> · JUTE</>,
+    titleEn:'JUTE',
+    desc:'「黄金の繊維」— 世界一のジュート生産国',
+    descEn:'"Golden Fibre" — world\'s largest jute producer',
+    color:'rgba(218,165,32,0.15)',
+    bar:'#daa520',
+    bg:'https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=1200&q=60',
+  },
+  {
+    id:'pharma',num:'04',
+    tag:'Industry Four',
+    title:<><R k="医薬品" r="いやくひん"/> · PHARMA</>,
+    titleEn:'PHARMA',
+    desc:'150カ国以上に輸出する驚きの医薬品大国',
+    descEn:'A pharmaceutical giant exporting to 150+ countries',
+    color:'rgba(58,140,200,0.15)',
+    bar:'#3a8ccc',
+    bg:'https://images.unsplash.com/photo-1631549916768-4119b2e5f926?w=1200&q=60',
+  },
+];
