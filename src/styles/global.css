@@ -937,3 +937,182 @@ body.no-furigana ruby{vertical-align:baseline;}
   z-index:3;
   animation:pulse 2s ease infinite;
 }
+
+/* ═══════════════════════════════════
+   MOBILE RESPONSIVE (≤768px)
+═══════════════════════════════════ */
+@media (max-width: 768px) {
+  /* Nav */
+  .nav { padding: 0.9rem 1rem; flex-wrap: wrap; gap: 0.5rem; }
+  .nav-logo { font-size: 1.1rem; gap: 0.4rem; }
+  .nav-logo .latin { font-size: 0.95rem; letter-spacing: 0.2em; }
+  .nav-back { font-size: 0.6rem; padding: 0.4rem 0.8rem; }
+
+  /* Lang toggle compact */
+  .lang-btn { padding: 0.3rem 0.6rem; font-size: 0.55rem; letter-spacing: 0.05em; }
+
+  /* Home hero */
+  .home-bengali { font-size: 4rem !important; }
+  .home-title { font-size: 1.8rem !important; letter-spacing: 0.25em; }
+  .home-meaning { font-size: 0.85rem; padding: 0 1rem; }
+  .home-sub { font-size: 0.78rem; padding: 0 1.5rem; line-height: 1.8; }
+  .home-flag { padding: 0.3rem 0.8rem; }
+  .home-flag p { font-size: 0.55rem; letter-spacing: 0.1em; }
+
+  /* Home entries */
+  .home-entries { padding: 3rem 1.2rem; }
+  .entry { height: auto; min-height: 110px; }
+  .entry-num { font-size: 3rem; right: 0.8rem; }
+  .entry-content { padding: 1rem 1.2rem; }
+  .entry-tag { font-size: 0.55rem; letter-spacing: 0.2em; }
+  .entry-title { font-size: 1.1rem !important; }
+  .entry-desc { font-size: 0.7rem; line-height: 1.5; }
+  .entry-arrow { font-size: 0.6rem; right: 1rem; bottom: 0.9rem; }
+  .entries-label { font-size: 0.6rem; letter-spacing: 0.25em; }
+
+  /* Chapter tabs — scrollable horizontal strip */
+  .chapter-tabs {
+    padding: 0 1rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  .chapter-tabs::-webkit-scrollbar { height: 2px; }
+  .ctab {
+    padding: 0.8rem 1.1rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+  }
+
+  /* Chapter hero */
+  .chapter-wrap { min-height: auto; padding: 2rem 0; }
+  .chapter-hero-content { padding: 2rem 1.5rem; max-width: 100%; }
+  .chapter-period { font-size: 0.75rem; letter-spacing: 0.2em; }
+  .chapter-title-big { font-size: 2rem !important; line-height: 1.2; margin-bottom: 1rem; }
+  .chapter-body-text { font-size: 0.78rem; line-height: 1.9; }
+  .chapter-img-panel {
+    position: relative !important;
+    right: auto !important; top: auto !important; transform: none !important;
+    width: calc(100% - 3rem) !important;
+    height: 200px !important;
+    margin: 1.5rem;
+    z-index: 2;
+  }
+
+  /* Cards section — KEY FIX */
+  .cards-section { padding: 2.5rem 1rem; }
+  .cards-label { font-size: 0.6rem; letter-spacing: 0.25em; margin-bottom: 1.5rem; }
+  .cards-row {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  .icard {
+    aspect-ratio: 16 / 10 !important;
+    width: 100%;
+  }
+  .icard-content { padding: 1.2rem; }
+  .icard-title { font-size: 0.95rem !important; }
+  .icard-text {
+    opacity: 1 !important;
+    max-height: 200px !important;
+    font-size: 0.7rem;
+  }
+  .icard-num { font-size: 0.65rem; }
+
+  /* Stats band */
+  .stats-band { padding: 3rem 1rem; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .stat-card { padding: 1.5rem 1rem; }
+  .stat-num { font-size: 2.4rem; }
+  .stat-lbl { font-size: 0.58rem; letter-spacing: 0.1em; }
+
+  /* Products section */
+  .products-section { padding: 3rem 1rem; }
+  .products-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  .products-title { font-size: 1.8rem !important; padding: 0 1rem; }
+  .products-label { font-size: 0.55rem; letter-spacing: 0.25em; }
+  .products-sub { font-size: 0.78rem; padding: 0 1rem; }
+  .pcard { aspect-ratio: 16 / 10 !important; }
+  .pcard-content { padding: 1.2rem; }
+  .pcard-name { font-size: 0.95rem; }
+  .pcard-desc { font-size: 0.68rem; }
+
+  /* Page quote */
+  .page-quote { padding: 3rem 1.5rem; }
+  .quote-body { font-size: 1rem !important; line-height: 1.7; }
+
+  /* Quiz CTA */
+  .quiz-cta { padding: 3rem 1.5rem; }
+  .quiz-cta-label { font-size: 0.55rem; letter-spacing: 0.25em; }
+  .quiz-cta-title { font-size: 1.5rem !important; }
+  .quiz-cta-desc { font-size: 0.78rem; margin-bottom: 1.5rem; }
+  .quiz-btn { padding: 0.9rem 2rem; font-size: 0.72rem; letter-spacing: 0.15em; }
+
+  /* Keypoint detail page */
+  .kp-hero { height: auto !important; min-height: 400px !important; }
+  .kp-hero-content { padding: 2.5rem 1.5rem; }
+  .kp-breadcrumb { font-size: 0.55rem; letter-spacing: 0.2em; margin-bottom: 1rem; }
+  .kp-number { font-size: 0.7rem; letter-spacing: 0.2em; }
+  .kp-title { font-size: 2rem !important; line-height: 1.15; margin-bottom: 1rem; }
+  .kp-lede { font-size: 0.9rem !important; line-height: 1.6; }
+  .kp-body { padding: 3rem 1.5rem; }
+  .kp-section { margin-bottom: 3rem; }
+  .kp-section-num { font-size: 0.62rem; letter-spacing: 0.25em; }
+  .kp-section-title { font-size: 1.4rem !important; line-height: 1.4; margin-bottom: 1rem; }
+  .kp-para { font-size: 0.82rem; line-height: 1.9; }
+  .kp-pullquote {
+    margin: 2.5rem 0;
+    padding: 1.5rem 1.5rem;
+    font-size: 1rem;
+  }
+  .kp-pullquote::before { font-size: 4rem; }
+  .kp-facts { grid-template-columns: 1fr !important; }
+  .kp-fact { padding: 1.5rem 1rem; }
+  .kp-fact-num { font-size: 2rem; }
+  .kp-refs { padding: 2rem 1.5rem 4rem; }
+  .kp-back-cta { padding: 2.5rem 1.5rem; }
+  .kp-back-cta-btn { font-size: 0.7rem; padding: 0.8rem 1.8rem; }
+
+  /* Quiz modal */
+  .quiz-overlay { padding: 0.8rem; }
+  .quiz-modal { max-height: 95vh; }
+  .quiz-header { padding: 1.5rem 1.5rem; }
+  .quiz-header-title { font-size: 1.2rem; }
+  .quiz-body { padding: 1.5rem; }
+  .quiz-question { font-size: 1rem; margin-bottom: 1.2rem; }
+  .quiz-option { padding: 0.9rem 1rem; font-size: 0.78rem; }
+  .quiz-option-letter { width: 24px; height: 24px; font-size: 0.65rem; }
+  .quiz-result { padding: 2.5rem 1.5rem; }
+  .quiz-result-title { font-size: 1.5rem; }
+
+  /* Progress widget — make it smaller, bottom-right but compact */
+  .progress-widget {
+    bottom: 1rem; right: 1rem;
+    padding: 0.7rem 0.9rem; gap: 0.6rem;
+    border-radius: 8px;
+  }
+  .progress-circle { width: 32px; height: 32px; }
+  .progress-circle svg { width: 32px; height: 32px; }
+  .progress-label { font-size: 0.58rem; letter-spacing: 0.1em; }
+  .progress-count { font-size: 0.9rem; }
+
+  /* Hide custom cursor on touch devices — it lags and isn't useful */
+  #cur, #cur-r { display: none !important; }
+  body { cursor: auto !important; }
+}
+
+/* Extra small screens (≤480px) - tighten further */
+@media (max-width: 480px) {
+  .home-bengali { font-size: 3.2rem !important; }
+  .home-title { font-size: 1.5rem !important; }
+  .nav { padding: 0.7rem 0.8rem; }
+  .nav-logo { font-size: 1rem; }
+  .ctab { padding: 0.7rem 0.8rem; font-size: 0.58rem; }
+  .chapter-title-big { font-size: 1.6rem !important; }
+  .kp-title { font-size: 1.6rem !important; }
+}
