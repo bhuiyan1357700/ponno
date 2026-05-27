@@ -7,6 +7,8 @@ import { LangToggle } from './components/LangToggle.jsx'
 import { ProgressWidget } from './components/ProgressWidget.jsx'
 import { KeypointPage } from './components/KeypointPage.jsx'
 import { Quiz } from './components/Quiz.jsx'
+import { Search } from './components/Search.jsx'
+import { Favorites } from './components/Favorites.jsx'
 import { Home } from './pages/Home.jsx'
 import { TextilePage } from './pages/TextilePage.jsx'
 import { LeatherPage } from './pages/LeatherPage.jsx'
@@ -22,32 +24,35 @@ export function App() {
   const [lang, setLang] = useState('JP')
   const [showFurigana, setShowFurigana] = useState(true)
   const [readKeypoints, setReadKeypoints] = useState([])
+  const [favorites, setFavorites] = useState([])
   const [quizIndustry, setQuizIndustry] = useState(null)
 
-  // Load saved state from localStorage
   useEffect(() => {
     try {
       const savedRead = JSON.parse(localStorage.getItem('ponno_read') || '[]')
+      const savedFavs = JSON.parse(localStorage.getItem('ponno_favs') || '[]')
       const savedFuri = localStorage.getItem('ponno_furigana')
       const savedLang = localStorage.getItem('ponno_lang')
       if (Array.isArray(savedRead)) setReadKeypoints(savedRead)
+      if (Array.isArray(savedFavs)) setFavorites(savedFavs)
       if (savedFuri !== null) setShowFurigana(savedFuri === 'true')
       if (savedLang === 'JP' || savedLang === 'EN') setLang(savedLang)
     } catch (e) {}
   }, [])
 
-  // Persist read keypoints
   useEffect(() => {
     try { localStorage.setItem('ponno_read', JSON.stringify(readKeypoints)) } catch (e) {}
   }, [readKeypoints])
 
-  // Toggle furigana on body class
+  useEffect(() => {
+    try { localStorage.setItem('ponno_favs', JSON.stringify(favorites)) } catch (e) {}
+  }, [favorites])
+
   useEffect(() => {
     document.body.classList.toggle('no-furigana', !showFurigana)
     try { localStorage.setItem('ponno_furigana', String(showFurigana)) } catch (e) {}
   }, [showFurigana])
 
-  // Persist language
   useEffect(() => {
     document.body.classList.toggle('lang-en', lang === 'EN')
     document.documentElement.lang = lang.toLowerCase()
@@ -71,11 +76,22 @@ export function App() {
     setTimeout(() => { setKeypoint(null); setBusy(false) }, 400)
   }
 
+  const toggleFavorite = (key) => {
+    setFavorites(prev =>
+      prev.includes(key)
+        ? prev.filter(k => k !== key)
+        : [...prev, key]
+    )
+  }
+
+  const removeFavorite = (key) => {
+    setFavorites(prev => prev.filter(k => k !== key))
+  }
+
   const openQuiz = (industry) => setQuizIndustry(industry)
   const closeQuiz = () => setQuizIndustry(null)
 
   const totalKeypoints = Object.keys(KEYPOINTS).length
-
   const isHome = page === 'home' && !keypoint
 
   const renderPage = (p) => {
@@ -101,7 +117,13 @@ export function App() {
             <span>পণ্য</span>
             <span className="latin">PONNO</span>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.7rem' }}>
+            <Search onOpenKeypoint={openKeypoint} />
+            <Favorites
+              favorites={favorites}
+              onOpenKeypoint={openKeypoint}
+              onRemove={removeFavorite}
+            />
             <LangToggle
               lang={lang}
               setLang={setLang}
@@ -143,7 +165,13 @@ export function App() {
 
         {keypoint ? (
           <div className={`scene ${busy ? 'enter-fwd' : ''}`} style={{ zIndex: 2 }}>
-            <KeypointPage data={KEYPOINTS[keypoint]} onBack={closeKeypoint} />
+            <KeypointPage
+              data={KEYPOINTS[keypoint]}
+              dataKey={keypoint}
+              onBack={closeKeypoint}
+              isFavorite={favorites.includes(keypoint)}
+              onToggleFavorite={toggleFavorite}
+            />
           </div>
         ) : (
           <div className={`scene ${busy ? (page === 'home' ? 'enter-back' : 'enter-fwd') : ''}`} style={{ zIndex: 2 }}>

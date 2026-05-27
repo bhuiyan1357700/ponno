@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { R } from './Furigana.jsx'
 import { T } from './T.jsx'
 
-export function KeypointPage({data, onBack}){
+export function KeypointPage({data, dataKey, onBack, isFavorite, onToggleFavorite}){
   const figRefs = useRef([]);
   const secRefs = useRef([]);
   const [progress, setProgress] = useState(0);
@@ -32,7 +32,17 @@ export function KeypointPage({data, onBack}){
   return(
     <div className="kp-page" ref={containerRef} style={{position:'relative',height:'100vh',overflowY:'auto'}}>
       <div className="kp-progress" style={{width:`${progress}%`}}/>
-      {/* Hero */}
+
+      {onToggleFavorite && (
+        <button
+          className={`kp-fav-btn ${isFavorite ? 'active' : ''}`}
+          onClick={() => onToggleFavorite(dataKey)}
+          title={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+        >
+          {isFavorite ? '★' : '☆'}
+        </button>
+      )}
+
       <div className="kp-hero">
         <div className="kp-hero-img" style={{backgroundImage:`url(${data.heroImg})`}}/>
         <div className="kp-hero-overlay"/>
@@ -46,7 +56,6 @@ export function KeypointPage({data, onBack}){
         </div>
       </div>
 
-      {/* Body */}
       <div className="kp-body">
         {data.sections.map((sec,si)=>(
           <div key={si} className="kp-section" ref={el=>secRefs.current[si]=el}>
@@ -76,7 +85,6 @@ export function KeypointPage({data, onBack}){
         ))}
       </div>
 
-      {/* References */}
       <div className="kp-refs">
         <div className="kp-refs-title"><R k="参考資料" r="さんこうしりょう" dark/> · References</div>
         {data.refs.map((r,i)=>(
